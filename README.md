@@ -9,11 +9,11 @@ pass the original shap_value to our new class to instantiate a instance and plot
 ```python
 #create a class to show the alternative feature vavlue
 class MyExplanation(shap._explanation.Explanation):
-   def __init__(self,shape_value,column_names):
-      super(MyExplanation,self).__init__(shape_value)
-      self.values = shape_value.values
-      self.base_values = shape_value.base_values
-      self.feature_names = shape_value.feature_names
+   def __init__(self,shap_value,column_names):
+      super(MyExplanation,self).__init__(shap_value)
+      self.values = shap_value.values
+      self.base_values = shap_value.base_values
+      self.feature_names = shap_value.feature_names
       self.data = []
       data = list(shap_value.data[0])
       #Traverse feature names
@@ -42,11 +42,11 @@ SHAP用于特征解释，对于机器学习方法往往需要对原始特征进�
 ```python
 #定制类以修改显示出来的特征名
 class MyExplanation(shap._explanation.Explanation):
-   def __init__(self,shape_value,column_names):
-      super(MyExplanation,self).__init__(shape_value)
-      self.values = shape_value.values
-      self.base_values = shape_value.base_values
-      self.feature_names = shape_value.feature_names
+   def __init__(self,shap_value,column_names):
+      super(MyExplanation,self).__init__(shap_value)
+      self.values = shap_value.values
+      self.base_values = shap_value.base_values
+      self.feature_names = shap_value.feature_names
       self.data = []
       data = list(shap_value.data[0])
       #遍历特征名

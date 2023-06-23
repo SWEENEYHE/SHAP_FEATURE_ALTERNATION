@@ -1,11 +1,11 @@
 # SHAP_FEATURRE_ALTERNATION
 ## 1.Problem description
 SHAP is used for feature interpretation. For machine learning methods, it is often necessary to encode the original features. When drawing a single sample, SHAP displays each feature and its value, which is already encoded and its meaning cannot be determined. For example, The auction company, city, and author information shown in the following figure.
-
+![在这里插入图片描述](https://github.com/SWEENEYHE/SHAP_FEATURRE_ALTERNATION/blob/main/1.png)
+![在这里插入图片描述](https://github.com/SWEENEYHE/SHAP_FEATURRE_ALTERNATION/blob/main/2.png)
 
 ## 2.Code
-将原始的shap_value传入自定义类实例中，使用新实例绘制即可
-完整代码：
+pass the original shap_value to our new class to instantiate a instance and plot anything by the new one
 ```python
 #create a class to show the alternative feature vavlue
 class MyExplanation(shap._explanation.Explanation):

@@ -1,5 +1,33 @@
 # SHAP_FEATURRE_ALTERNATION
-change the SHAP feature value to show it's real meaning
+## 1.Problem description
+SHAP is used for feature interpretation. For machine learning methods, it is often necessary to encode the original features. When drawing a single sample, SHAP displays each feature and its value, which is already encoded and its meaning cannot be determined. For example, The auction company, city, and author information shown in the following figure.
+
+
+## 2.Code
+将原始的shap_value传入自定义类实例中，使用新实例绘制即可
+完整代码：
+```python
+#create a class to show the alternative feature vavlue
+class MyExplanation(shap._explanation.Explanation):
+   def __init__(self,shape_value,column_names):
+      super(MyExplanation,self).__init__(shape_value)
+      self.values = shape_value.values
+      self.base_values = shape_value.base_values
+      self.feature_names = shape_value.feature_names
+      self.data = []
+      data = list(shap_value.data[0])
+      #Traverse feature names
+      for i,feature_name in enumerate(self.feature_names):
+         self.data.append(data[i])
+         #if it needed change
+         if feature_name in column_names:
+            self.data[i] = column_names[feature_name]
+      #the original data is [[]] type
+      self.data = [self.data]
+
+my_shap_value = MyExplanation(shap_value,{"author":"unknow","auc_city":"Beijing","auc_company":"BaoLi"})
+my_shap_value
+```
 
 
 ## 1.问题描述
